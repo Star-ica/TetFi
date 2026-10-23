@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TetFi — Project Submission</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #07090f;
+      --s1:      #0d1017;
+      --s2:      #121720;
+      --border:  #1a2235;
+      --gold:    #F5C542;
+      --gold2:   #c49a2a;
+      --cyan:    #00D4E8;
+      --green:   #00C875;
+      --text:    #dde1ee;
+      --muted:   #596380;
+      --f:       'Inter', sans-serif;
+      --mono:    'JetBrains Mono', monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--f);
+      font-size: 15px;
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    .wrap { max-width: 780px; margin: 0 auto; padding: 0 24px 80px; }
+
+    /* ── Top bar ── */
+    .topbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 0 16px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+    }
+    .topbar-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--gold);
+      animation: glow 2s ease-in-out infinite;
+    }
+    @keyframes glow {
+      0%,100%{ box-shadow: 0 0 0 0 rgba(245,197,66,.4); }
+      50%    { box-shadow: 0 0 0 6px rgba(245,197,66,0); }
+    }
+    .topbar-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+
+    /* ── Cover ── */
+    .cover {
+      padding: 0 0 52px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 52px;
+    }
+    .cover-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .cover-name {
+      font-size: clamp(56px, 10vw, 88px);
+      font-weight: 800;
+      line-height: .95;
+      letter-spacing: -3px;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .cover-blurb {
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--text);
+      max-width: 600px;
+      margin-bottom: 28px;
+    }
+    .cover-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 4px 11px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: var(--s1);
+    }
+    .tag.hi { border-color: rgba(245,197,66,.35); color: var(--gold); background: rgba(245,197,66,.06); }
+
+    /* ── Section ── */
+    .section { margin-bottom: 52px; }
+
+    .section-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ── Field ── */
+    .field { margin-bottom: 20px; }
+    .field-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--muted);
+      margin-bottom: 5px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .field-value {
+      font-size: 15px;
+      color: var(--text);
+    }
+    .field-value a {
+      color: var(--cyan);
+      text-decoration: none;
+    }
+    .field-value a:hover { text-decoration: underline; }
+    .field-value.mono {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--cyan);
+    }
+
+    /* ── Blurb card ── */
+    .blurb-card {
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 8px 8px 0;
+      padding: 20px 22px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--text);
+    }
+
+    /* ── Bullets ── */
+    .bullets { display: flex; flex-direction: column; gap: 12px; }
+    .bullet-item {
+      display: flex;
+      gap: 14px;
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      align-items: flex-start;
+    }
+    .bullet-num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--gold2);
+      font-weight: 600;
+      min-width: 22px;
+      padding-top: 2px;
+    }
+    .bullet-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .bullet-text strong { color: var(--gold); font-weight: 600; }
+
+    /* ── Tg card ── */
+    .tg-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+      text-decoration: none;
+      transition: border-color .15s;
+    }
+    .tg-card:hover { border-color: #229ED9; }
+    .tg-icon {
+      width: 36px; height: 36px;
+      background: #229ED9;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .tg-icon svg { width: 20px; height: 20px; }
+    .tg-handle {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .tg-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── PDF card ── */
+    .pdf-card {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: var(--s1);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .pdf-icon {
+      width: 44px; height: 44px;
+      background: rgba(245,197,66,.12);
+      border: 1px solid rgba(245,197,66,.25);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pdf-icon svg { width: 22px; height: 22px; }
+    .pdf-name { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .pdf-meta { font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .pdf-dl {
+      margin-left: auto;
+      background: var(--gold);
+      color: #07090f;
+      border: none;
+      border-radius: 7px;
+      padding: 9px 18px;
+      font-family: var(--f);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .pdf-dl:hover { opacity: .85; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 24px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="topbar-dot"></div>
+    <div class="topbar-label">Project Submission · BOT Chain Africa Builder Challenge 2026</div>
+  </div>
+
+  <!-- Cover -->
+  <div class="cover">
+    <div class="cover-eyebrow">Project Name</div>
+    <div class="cover-name">TetFi</div>
+    <div class="cover-blurb">
+      A decentralised, on-chain lottery protocol on BOT Chain — transparent by design,
+      trustless by default. Three lottery modes, instant payouts, and a fully verifiable
+      draw history. No intermediaries. No hidden mechanics. Just code.
+    </div>
+    <div class="cover-tags">
+      <span class="tag hi">DeFi</span>
+      <span class="tag hi">Lottery</span>
+      <span class="tag">BOT Chain</span>
+      <span class="tag">Chain ID 968</span>
+      <span class="tag">Solidity</span>
+      <span class="tag">Open Source</span>
+    </div>
+  </div>
+
+  <!-- 1 Project Name -->
+  <div class="section">
+    <div class="section-num">01</div>
+    <div class="section-title">Project Name</div>
+    <div class="field-value" style="font-size:22px;font-weight:700;color:var(--gold)">TetFi</div>
+  </div>
+
+  <!-- 2 Blurb -->
+  <div class="section">
+    <div class="section-num">02</div>
+    <div class="section-title">Project Blurb</div>
+    <div class="blurb-card">
+      TetFi is a fully on-chain lottery protocol built on BOT Chain. It removes the opacity
+      and custody risks of traditional lotteries by executing every draw, payout, and record
+      directly on-chain via auditable smart contracts. Participants choose from three modes —
+      Ticket (buy numbered entries), Pool (equal-odds for any contribution), and Raffle
+      (capped ticket supply for guaranteed draw) — and receive winnings automatically in the
+      same transaction as the draw. There are no withdrawal delays, no hidden fees beyond a
+      published 5% platform rate, and no token required beyond the native BOT currency.
+      TetFi is designed for the everyday BOT Chain user: connect a wallet, buy a ticket, win on-chain.
+    </div>
+  </div>
+
+  <!-- 3 Website -->
+  <div class="section">
+    <div class="section-num">03</div>
+    <div class="section-title">Project Website</div>
+    <div class="field">
+      <div class="field-label">Live URL</div>
+      <div class="field-value mono">
+        <a href="https://tetfi.vercel.app" target="_blank">https://tetfi.vercel.app</a>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">Network</div>
+      <div class="field-value">BOT Chain Testnet · Chain ID 968</div>
+    </div>
+    <div class="field">
+      <div class="field-label">Explorer</div>
+      <div class="field-value mono">
+        <a href="https://scan.botchain.ai" target="_blank">https://scan.botchain.ai</a>
+      </div>
+    </div>
+    <div class="field">
+      <div class="field-label">RPC</div>
+      <div class="field-value mono">https://rpc.botchain.ai</div>
+    </div>
+  </div>
+
+  <!-- 4 Co-marketing -->
+  <div class="section">
+    <div class="section-num">04</div>
+    <div class="section-title">Co-Marketing Bullet Points</div>
+    <div class="bullets">
+      <div class="bullet-item">
+        <div class="bullet-num">01</div>
+        <div class="bullet-text">
+          <strong>Jackpot Sponsorship</strong> — Partner brands sponsor a TetFi round jackpot,
+          gaining in-UI branding, a co-branded draw banner, and social posts across TetFi and
+          partner channels — putting your project in front of every BOT Chain lottery participant.
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">02</div>
+        <div class="bullet-text">
+          <strong>Prize Pool Top-Up Campaigns</strong> — Partner projects contribute BOT to an
+          upcoming jackpot, creating a shared incentive that drives their community to TetFi and
+          surfaces TetFi to the partner's audience simultaneously — double reach, single spend.
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">03</div>
+        <div class="bullet-text">
+          <strong>Whitelist & NFT Raffle Rounds</strong> — Partners distribute whitelist spots,
+          NFT allocations, or exclusive access passes as TetFi Raffle prizes, leveraging our
+          on-chain draw mechanism as a fair, auditable distribution tool for their own launches.
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">04</div>
+        <div class="bullet-text">
+          <strong>Co-Branded Landing Pages</strong> — Joint campaign microsites hosted at
+          tetfi.vercel.app, featuring the partner's branding alongside TetFi's lottery interface
+          — ideal for hackathon activations, product launches, or ecosystem awareness drives
+          targeting BOT Chain users.
+        </div>
+      </div>
+      <div class="bullet-item">
+        <div class="bullet-num">05</div>
+        <div class="bullet-text">
+          <strong>Community Cross-Promotion</strong> — Coordinated Telegram and X campaigns
+          with shared prize pools and mutual shoutouts, connecting our respective communities
+          and growing the BOT Chain DeFi user base together through gamified participation.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5 Telegram -->
+  <div class="section">
+    <div class="section-num">05</div>
+    <div class="section-title">Developer Telegram</div>
+    <a class="tg-card" href="https://t.me/0xsolmm" target="_blank" rel="noopener">
+      <div class="tg-icon">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="tg-handle">@0xsolmm</div>
+        <div class="tg-sub">Lead Developer · TetFi</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- 6 Whitepaper -->
+  <div class="section">
+    <div class="section-num">06</div>
+    <div class="section-title">Whitepaper</div>
+    <div class="pdf-card">
+      <div class="pdf-icon">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="#F5C542" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="#F5C542" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="pdf-name">TetFi Whitepaper v1.0</div>
+        <div class="pdf-meta">PDF · October 2026 · BOT Chain</div>
+      </div>
+      <a class="pdf-dl" href="TetFi_Whitepaper.pdf" download>Download PDF</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>TetFi · https://tetfi.vercel.app</span>
+    <span>BOT Chain · Chain ID 968 · October 2026</span>
+  </footer>
+
+</div>
+</body>
+</html>
