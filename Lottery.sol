@@ -4,7 +4,7 @@ pragma solidity ^0.8.20;
 /**
  * @title Lottery
  * @notice Supports three modes: Ticket-based, Pool-based, Raffle
- * @dev Deploy on BOT Chain (chain ID 968)
+ * @dev Deploy on BOT Chain (chain ID 677)
  *
  * WARNING: Uses block-based pseudo-randomness. For production,
  * integrate a VRF oracle (e.g. Chainlink VRF) for fair randomness.

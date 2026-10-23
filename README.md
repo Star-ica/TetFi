@@ -31,7 +31,7 @@ forge install foundry-rs/forge-std
 export PRIVATE_KEY=0x...
 export ETHERSCAN_API_KEY=...   # optional, for verification
 
-# Deploy to BOT Chain (968)
+# Deploy to BOT Chain (677)
 forge script contracts/Deploy.s.sol:DeployLottery \
   --rpc-url bot_chain \
   --broadcast \
@@ -82,6 +82,6 @@ Update `foundry.toml` if BOT Chain endpoints differ:
 ```
 RPC:      https://rpc.botchain.network
 Explorer: https://explorer.botchain.network
-Chain ID: 968
+Chain ID: 677
 ```
 # TetFi

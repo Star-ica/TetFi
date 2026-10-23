@@ -640,7 +640,7 @@
   <header>
     <div class="logo">Lotto<span>Chain</span></div>
     <div class="header-right">
-      <div class="chain-badge">BOT Chain · 968</div>
+      <div class="chain-badge">BOT Chain · 677</div>
       <div class="wallet-wrap">
         <button id="connectBtn">Connect Wallet</button>
         <button id="walletBtn">
@@ -861,7 +861,7 @@
       </a>
     </div>
   </div>
-  <div class="footer-copy">TetFi · BOT Chain Testnet (Chain ID 968) · Smart contract — verify before use</div>
+  <div class="footer-copy">TetFi · BOT Chain mainnet (Chain ID 677) · Smart contract — verify before use</div>
 </footer>
 
 <!-- ── Toast ── -->
@@ -881,7 +881,7 @@ const EXPLORER_URL      = "https://scan.botchain.ai";
 
 const BOT_CHAIN_PARAMS = {
   chainId:           BOT_CHAIN_HEX,
-  chainName:         "BOT Chain Testnet",
+  chainName:         "BOT Chain mainnet",
   nativeCurrency:    { name: "BOT", symbol: "BOT", decimals: 18 },
   rpcUrls:           [RPC_URL],
   blockExplorerUrls: [EXPLORER_URL]
@@ -1073,7 +1073,7 @@ async function doConnect(prov) {
     const network = await prov.getNetwork();
 
     if (Number(network.chainId) !== BOT_CHAIN_ID) {
-      toast("Switching to BOT Chain Testnet…", "info");
+      toast("Switching to BOT Chain mainnet…", "info");
       try {
         await prov.send("wallet_switchEthereumChain", [{ chainId: BOT_CHAIN_HEX }]);
       } catch (e) {
@@ -1100,7 +1100,7 @@ async function doConnect(prov) {
     checkAdmin();
     await refreshAll();
     listenEvents();
-    toast("Connected to BOT Chain Testnet", "success");
+    toast("Connected to BOT Chain mainnet", "success");
 
   } catch(e) {
     console.error(e);
@@ -1498,9 +1498,9 @@ if (window.ethereum) {
 
   window.ethereum.on("chainChanged", chainId => {
     if (parseInt(chainId, 16) !== BOT_CHAIN_ID) {
-      toast("Wrong network — please switch to BOT Chain (968)", "error");
+      toast("Wrong network — please switch to BOT Chain (677)", "error");
     } else {
-      toast("Connected to BOT Chain Testnet", "success");
+      toast("Connected to BOT Chain mainnet", "success");
       refreshAll();
     }
   });
